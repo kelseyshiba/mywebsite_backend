@@ -4,18 +4,25 @@ var nodemailer = require('nodemailer');
 var cors = require('cors');
 const creds = require('./config');
 
+app.all('https://shibadeveloper.com', function(req, res, next) {
+  var origin = req.get('origin'); 
+  res.header('Access-Control-Allow-Origin', origin);
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+})
 //other code?
-const path = require('path');
+//const path = require('path');
 
 //Static file 
 //declarationapp.use(express.static(path.join(__dirname, 'client/build')));
 //production mode
-if(process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'client/build')));  //  
-  app.get('*', (req, res) => {    
-    res.sendfile(path.join(__dirname = 'client/build/index.html'));  
-  })
-  }
+// if(process.env.NODE_ENV === 'production') {
+//   app.use(express.static(path.join(__dirname, 'client/build')));  //  
+//   app.get('*', (req, res) => {    
+//     res.sendfile(path.join(__dirname = 'client/build/index.html'));  
+//   })
+//   }
 //build 
 //modeapp.get('*', (req, res) => {  
   //res.sendFile(path.join(__dirname+'/client/public/index.html'));
