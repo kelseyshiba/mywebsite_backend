@@ -4,13 +4,7 @@ var nodemailer = require('nodemailer');
 var cors = require('cors');
 const creds = require('./config');
 
-app.all('https://shibadeveloper.com', function(req, res, next) {
-  var origin = req.get('origin'); 
-  res.header('Access-Control-Allow-Origin', origin);
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-})
+
 //other code?
 //const path = require('path');
 
@@ -80,3 +74,11 @@ router.post('/send', (req, res, next) => {
   app.use(express.json())
   app.use('/', router)
   app.listen(3002)
+
+  app.all('https://shibadeveloper.com', function(req, res, next) {
+  var origin = req.get('origin'); 
+  res.header('Access-Control-Allow-Origin', origin);
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+})
