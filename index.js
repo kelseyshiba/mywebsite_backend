@@ -76,10 +76,10 @@ router.post('/send', (req, res, next) => {
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
   })
 
-  // app.all('https://shibadeveloper.com', function(req, res, next) {
-  // var origin = req.get('origin'); 
-  // res.header('Access-Control-Allow-Origin', origin);
-  // res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  // res.header('Access-Control-Allow-Headers', 'Content-Type');
-  // next();
-  // })
+  app.all('https://shibadeveloper.com', function(req, res, next) {
+  var origin = req.get('origin'); 
+  res.header('Access-Control-Allow-Origin', origin);
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+  })
