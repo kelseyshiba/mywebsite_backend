@@ -62,7 +62,7 @@ router.post('/send', (req, res, next) => {
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
   })
 
-  if (process.env.NODE_ENV === "production"{
+  if (process.env.NODE_ENV === "production"){
     app.use(express.static("build"));
     app.get("*", (req, res) => {
       res.sendFile(path.resolve(__dirname,  "build", "index.html"));

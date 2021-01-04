@@ -1,2 +1,3 @@
 # Ignore config file with credentials
 /config.jsnode modules
+node_modules
