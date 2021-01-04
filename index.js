@@ -54,9 +54,12 @@ router.post('/send', (req, res, next) => {
   app.use(express.static(__dirname + '/'));
   app.use(express.json())
   app.use('/', router)
-  app.get('/', (req, res) => {
-    res.send('Welcome to my app');
-  })
+  // app.get('/', (req, res) => {
+  //   res.send('Welcome to my app');
+  // })
+  app.get('/favicon.ico', (req, res) => res.status(204));
+
+
 
   app.listen(process.env.PORT || 3002, function(){
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
