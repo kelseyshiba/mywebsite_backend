@@ -51,13 +51,20 @@ router.post('/send', (req, res, next) => {
   
   const app = express()
   app.use(cors())
-  app.use(express.static(__dirname + '/index.js'));
+  app.use(express.static(__dirname + '/'));
   app.use(express.json())
   app.use('/', router)
 
   app.listen(process.env.PORT || 3002, function(){
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
   })
+
+  if (process.env.NODE_ENV === "production"{
+    app.use(express.static("build"));
+    app.get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname,  "build", "index.html"));
+    });
+  }
 
   app.all('https://shibadeveloper.com', function(req, res, next) {
     var origin = req.get('origin'); 
