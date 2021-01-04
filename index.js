@@ -4,24 +4,6 @@ var nodemailer = require('nodemailer');
 var cors = require('cors');
 const creds = require('./config');
 
-//const path = require('path');
-
-//Static file 
-//declarationapp.use(express.static(path.join(__dirname, 'client/build')));
-//production mode
-// if(process.env.NODE_ENV === 'production') {
-//   app.use(express.static(path.join(__dirname, 'client/build')));  //  
-//   app.get('*', (req, res) => {    
-//     res.sendfile(path.join(__dirname = 'client/build/index.html'));  
-//   })
-//   }
-//build 
-//modeapp.get('*', (req, res) => {  
-  //res.sendFile(path.join(__dirname+'/client/public/index.html'));
-//})
-//start 
-//serverapp.listen(port, (req, res) => {  console.log( `server listening on port: ${port}`);})
-
 var transport = {
     host: 'smtp.gmail.com',
     port: 465,
@@ -69,6 +51,7 @@ router.post('/send', (req, res, next) => {
   
   const app = express()
   app.use(cors())
+  app.use(express.static(__dirname + '/'));
   app.use(express.json())
   app.use('/', router)
 
@@ -77,9 +60,9 @@ router.post('/send', (req, res, next) => {
   })
 
   app.all('https://shibadeveloper.com', function(req, res, next) {
-  var origin = req.get('origin'); 
-  res.header('Access-Control-Allow-Origin', origin);
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  next();
+    var origin = req.get('origin'); 
+    res.header('Access-Control-Allow-Origin', origin);
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
   })
