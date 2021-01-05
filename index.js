@@ -55,7 +55,7 @@ router.post('/send', (req, res, next) => {
   app.use(express.json())
   app.use('/', router)
   app.get('/', (req, res) => {
-    res.send('Welcome to my app');
+    res.send(200);
   })
 
   app.listen(process.env.PORT || 3002, function(){
