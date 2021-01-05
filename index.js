@@ -24,7 +24,6 @@ transporter.verify((error, success) => {
 });
 
 router.post('/send', (req, res, next) => {
-  console.log('hitting send function')
     var name = req.body.name
     var email = req.body.email
     var message = req.body.message
