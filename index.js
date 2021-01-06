@@ -38,8 +38,11 @@ router.post('/send', (req, res, next) => {
   
     transporter.sendMail(mail, (err, data) => {
       if (err) {
-        console.log(err)
+        console.log('=====err=====')
+        console.log(err, 'this is the goddamn error')
+        console.log('=====males=====')
         console.log(mail)
+        console.log('=====data=====')
         console.log(data)
         res.json({
           status: 'fail'
