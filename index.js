@@ -39,6 +39,8 @@ router.post('/send', (req, res, next) => {
     transporter.sendMail(mail, (err, data) => {
       if (err) {
         console.log(err)
+        console.log(mail)
+        console.log(data)
         res.json({
           status: 'fail'
         })
