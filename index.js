@@ -2,14 +2,14 @@ var express = require('express');
 var router = express.Router();
 var nodemailer = require('nodemailer');
 var cors = require('cors');
-const creds = require('./config');
+require('dotenv').config()
 
 var transport = {
     host: 'smtp.gmail.com',
     port: 465,
     auth: {
-    user: creds.USER,
-    pass: creds.PASS
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_PASS
   }
 }
 
